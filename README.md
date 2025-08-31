@@ -35,28 +35,28 @@
     
     *  Mô hình Multi Client-Server
     
-      - Server chính: quản lý bàn Sudoku, xử lý logic game, đồng bộ trạng thái cho các Client.
-        
-      - Các Client: gửi yêu cầu điền số, nhận thông báo kết quả từ Server.
+          - Server chính: quản lý bàn Sudoku, xử lý logic game, đồng bộ trạng thái cho các Client.
+            
+          - Các Client: gửi yêu cầu điền số, nhận thông báo kết quả từ Server.
     
     *  Xử lý logic Sudoku
     
-      - Sinh bàn Sudoku theo ba mức độ: Dễ – Trung bình – Khó.
-      
-      - Kiểm tra dữ liệu nhập hợp lệ (tọa độ, giá trị).
-      
-      - Giới hạn 3 lần nhập sai trước khi thua.
-      
-      - Hiển thị thời gian chơi và thông báo chiến thắng/thất bại.
+          - Sinh bàn Sudoku theo ba mức độ: Dễ – Trung bình – Khó.
+          
+          - Kiểm tra dữ liệu nhập hợp lệ (tọa độ, giá trị).
+          
+          - Giới hạn 3 lần nhập sai trước khi thua.
+          
+          - Hiển thị thời gian chơi và thông báo chiến thắng/thất bại.
       
     *  Giao diện Web (HTML + CSS + JavaScript)
     
-      - Giao diện bảng Sudoku (9x9).
-    
-    - Chức năng chọn mức độ chơi.
-    
-    - Hiển thị thời gian, số lần sai.
-    
-    - Kết nối với server (qua WebSocket hoặc Flask SocketIO).
-    
-    - Hiển thị kết quả khi hoàn thành game.
+        - Giao diện bảng Sudoku (9x9).
+        
+        - Chức năng chọn mức độ chơi.
+        
+        - Hiển thị thời gian, số lần sai.
+        
+        - Kết nối với server (qua WebSocket hoặc Flask SocketIO).
+        
+        - Hiển thị kết quả khi hoàn thành game.
