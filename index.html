@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Sudoku – Menu chính</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <h1>Sudoku – Menu</h1>
+
+  <div class="menu">
+    <label>Chọn độ khó:</label>
+    <select id="difficulty">
+      <option value="easy">Dễ</option>
+      <option value="medium">Trung bình</option>
+      <option value="hard">Khó</option>
+    </select>
+    <button id="btnNew">Chơi mới</button>
+    <button id="btnContinue">Tiếp tục game</button>
+    <button onclick="location.href='/instructions'">Xem hướng dẫn</button>
+  </div>
+
+  <script>
+    document.getElementById('btnNew').onclick = async () => {
+      const diff = document.getElementById('difficulty').value;
+      localStorage.setItem('difficulty', diff);
+      const resp = await fetch('/api/new_game', {
+        method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({difficulty: diff})
+      });
+      const data = await resp.json();
+      if(data.ok){ location.href = '/game'; } else { alert('Không tạo được game'); }
+    };
+    document.getElementById('btnContinue').onclick = async () => {
+      const resp = await fetch('/api/load');
+      const data = await resp.json();
+      if(data.ok){ location.href = '/game'; } else { alert('Chưa có game đã lưu'); }
+    };
+  </script>
+</body>
+</html>

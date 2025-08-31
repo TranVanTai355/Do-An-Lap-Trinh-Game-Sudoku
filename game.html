@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Sudoku – Chơi game</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <h1>Sudoku</h1>
+
+  <div class="hud">
+    <div>Độ khó: <span id="lblDiff">?</span></div>
+    <div>Thời gian: <span id="timer">0</span>s | Sai: <span id="mistakes">0</span>/3 | Gợi ý còn: <span id="hints">3</span></div>
+  </div>
+
+  <table id="board"></table>
+
+  <div class="controls">
+    <button id="btnHint">Gợi ý</button>
+    <button id="btnReset">Reset</button>
+    <button id="btnSave">Lưu</button>
+    <button id="btnFinish">Hoàn thành</button>
+    <button onclick="location.href='/'">Về menu</button>
+  </div>
+
+  <div id="msg" class="msg"></div>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

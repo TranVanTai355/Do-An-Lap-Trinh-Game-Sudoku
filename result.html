@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Kết quả</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <h1>Kết quả</h1>
+  <div id="resultBox"></div>
+  <button onclick="location.href='/'">Về menu</button>
+
+  <script>
+    const rs = JSON.parse(localStorage.getItem('last_result') || '{}');
+    const box = document.getElementById('resultBox');
+    if(rs && rs.win){
+      box.innerText = `Chiến thắng! Thời gian: ${rs.time}s | Điểm: ${rs.score}`;
+    }else{
+      box.innerText = 'Chưa có kết quả.';
+    }
+  </script>
+</body>
+</html>
