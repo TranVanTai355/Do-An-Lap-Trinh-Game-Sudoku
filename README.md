@@ -3,43 +3,60 @@
 
 * Ngôn ngữ: Python
 
-* Kỹ thuật: Socket lập trình mạng theo mô hình Multi Client - Server
+1. Lý do chọn đề tài
 
-* Giao diện: Web HTML (trình duyệt giao tiếp với server Python)
+    Sudoku là một trò chơi trí tuệ phổ biến, đòi hỏi khả năng tư duy logic và kiên nhẫn. Việc triển khai trò chơi này trong mô hình lập trình mạng Client-Server giúp người chơi có thể kết nối và tham gia cùng lúc  từ nhiều máy tính khác nhau. Ngoài ra, việc kết hợp với giao diện Web HTML tạo ra trải nghiệm trực quan, dễ sử dụng và phù hợp với xu hướng phát triển ứng dụng hiện nay.
 
-* Đảm bảo: Bao quát kiến thức lập trình mạng (socket, thread, client-server communication, đồng bộ, xử lý nhiều client).
+2. Mục tiêu của đồ án
 
-* Kiến thức mạng được áp dụng
+   - Xây dựng ứng dụng Sudoku hỗ trợ nhiều người chơi cùng lúc qua mô hình Multi Client-Server.
+    
+   - Ứng dụng kỹ thuật Socket trong Python để truyền dữ liệu giữa Client và Server.
+    
+   - Đảm bảo đồng bộ dữ liệu trò chơi giữa các người chơi trong cùng một phiên kết nối.
+    
+   - Thiết kế giao diện Web HTML để người chơi có thể thao tác dễ dàng (chọn mức độ, nhập số, theo dõi thời gian, thông báo kết quả).
+    
+   - Xử lý đầy đủ các yêu cầu logic của game Sudoku (kiểm tra hợp lệ, thông báo sai, giới hạn số lần nhập sai, tính giờ, chiến thắng/thua cuộc).
 
-  - Socket TCP/IP: Client – Server truyền dữ liệu Sudoku.
-  
-  - Multi-client: Server dùng threading để xử lý nhiều client cùng lúc.
-  
-  - Protocol: Định nghĩa gói tin (JSON) gồm:
-  
-      + action: join_game, move, quit, result
+3. Kỹ thuật được sử dụng
+   
+    * Lập trình mạng Python
+    
+      - Socket Programming (TCP/IP):
       
-      + data: tọa độ, số nhập, trạng thái thắng/thua
-    
-  - Đồng bộ dữ liệu: Server kiểm tra hợp lệ, gửi phản hồi cho tất cả client.
-    
-  - Timeout & Error handling: Xử lý client mất kết nối.
-    
-* Luồng hoạt động
-
-  - Client vào web → chọn Độ khó.
-    
-  - Server gửi bảng Sudoku tương ứng.
-    
-  - Người chơi nhập tọa độ + số → gửi server.
-    
-  - Server kiểm tra:
-    
-      + Nếu sai → cảnh báo. Sai 3 lần → thua.
+        + Server tạo socket và lắng nghe kết nối từ nhiều Client.
+        
+        + Client gửi/nhận dữ liệu (nước đi, kết quả, trạng thái bàn chơi) qua socket.
+        
+      - Multi-threading (đa luồng):
       
-      + Nếu đúng → cập nhật bảng.
+        Mỗi Client kết nối được xử lý bằng một luồng riêng biệt để đảm bảo nhiều người có thể chơi cùng lúc.
     
-  - Khi hoàn thành → Server gửi kết quả thắng và thời gian.
+    *  Mô hình Multi Client-Server
     
-  - Hiển thị kết quả trên web.
-
+      - Server chính: quản lý bàn Sudoku, xử lý logic game, đồng bộ trạng thái cho các Client.
+        
+      - Các Client: gửi yêu cầu điền số, nhận thông báo kết quả từ Server.
+    
+    *  Xử lý logic Sudoku
+    
+      - Sinh bàn Sudoku theo ba mức độ: Dễ – Trung bình – Khó.
+      
+      - Kiểm tra dữ liệu nhập hợp lệ (tọa độ, giá trị).
+      
+      - Giới hạn 3 lần nhập sai trước khi thua.
+      
+      - Hiển thị thời gian chơi và thông báo chiến thắng/thất bại.
+      
+    *  Giao diện Web (HTML + CSS + JavaScript)
+    
+      - Giao diện bảng Sudoku (9x9).
+    
+    - Chức năng chọn mức độ chơi.
+    
+    - Hiển thị thời gian, số lần sai.
+    
+    - Kết nối với server (qua WebSocket hoặc Flask SocketIO).
+    
+    - Hiển thị kết quả khi hoàn thành game.
