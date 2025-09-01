@@ -1,0 +1,15 @@
+body { font-family: Arial, sans-serif; margin: 24px; }
+h1 { margin-bottom: 8px; }
+.menu, .controls, .hud { margin: 12px 0; }
+#board { border-collapse: collapse; margin-top: 12px; }
+#board td {
+  width: 44px; height: 44px; text-align: center; font-size: 22px;
+  border: 1px solid #333; vertical-align: middle;
+}
+#board td.fixed { background: #e9ecef; font-weight: bold; }
+#board td.error { background: #ffc9c9; }
+#board td:focus { outline: 2px solid #4dabf7; }
+#board tr:nth-child(3) td, #board tr:nth-child(6) td { border-bottom: 3px solid #333; }
+#board td:nth-child(3), #board td:nth-child(6){ border-right: 3px solid #333; }
+.msg { margin-top: 10px; min-height: 20px; color: #c92a2a; }
+button { margin-right: 6px; }
